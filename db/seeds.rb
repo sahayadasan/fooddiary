@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+25.times do |i|
+    Log.create!(
+        date: Faker::Date.forward(10),
+        category: ['Breakfast', 'Lunch', 'Dinner'].sample,
+        name: Faker::Food.dish,
+        servings: (0..9).to_a.sample,
+        calories_per_serving: (100..500).to_a.sample
+        )
+end

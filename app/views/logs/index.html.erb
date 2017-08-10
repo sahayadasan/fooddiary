@@ -1,0 +1,82 @@
+<h1>Track Calories</h1>
+<%= form_with(model: @log, local: true) do |form| %>
+    <div class="field">
+        <%= form.label :date %>
+        <%= form.text_field :date, id: :log_date %>
+    </div>
+
+    <div class = "field">
+        <%=form.label :category %>
+        <%=form.select(:category, id: :log_category) do %>
+            <%['Breakfast', 'Lunch', 'Dinner'].each do |cat| %>
+                <%=content_tag(:option, cat, value: cat, selected: @log.category == cat)%>
+            <% end %>
+        <%end%>
+
+    <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :log_name %>
+    </div>
+
+    <div class="field">
+        <%= form.label :servings %>
+        <%= form.number_field :servings, id: :log_servings %>
+    </div>
+
+    <div class="field">
+        <%= form.label :calories_per_serving %>
+        <%= form.number_field :calories_per_serving, id: :log_calories_per_serving %>
+    </div>
+
+        
+    </div>
+
+    <div class="field">
+        <%= form.submit %>
+    </div>
+<% end %>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Delete</th>
+            <th>Update</th>
+            <th>date</th>
+            <th>category</th>
+            <th>name</th>
+            <th>#servings</th>
+            <th>#calories_per_serving</th>
+            <th>Total Calories</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @logs.each do |t| %>
+            <tr>
+                <td>
+                    <%=link_to(t, method: :delete) do %>
+                        <img width= "35" height ="35" src="/trashcan.png" />
+                    <% end %>
+                </td>
+                <td>
+                    <%=link_to('edit', edit_log_path(t)) %>
+                </td>
+                <td><%= t.date %></td>
+                <td><%= t.category %></td>
+                <td><%= t.name %></td>
+                <td><%= t.servings %></td>
+                <td><%= t.calories_per_serving %></td>
+                <td><%= t.servings * t.calories_per_serving %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+
+<h1>Total Calories</h1>
+<p>Total Breakfast: <%=@total_calorie_breakfast %></p>
+<p>Total Lunch: <%= @total_calorie_lunch %></p>
+<p>Total Dinner: <%= @total_calorie_dinner %></p>

@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+ body {
+     background-color: #5DADE2;
+     font-family: monospace;
+     
+     
+ }
+
+h1 {
+    font-size: 60px;
+}
+
+form{
+    border: 1px solid red;
+    background-color: yellow;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+th{
+    font-family: monospace;
+    font-size: 15px;
+}
+
+p{
+    border: 1px solid red;
+    background-color: yellow;
+    padding: 20px;
+    border-radius: 10px;
+}
